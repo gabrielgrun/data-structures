@@ -2,7 +2,7 @@ package substring.search.rabinkarp;
 
 public class RabinKarp {
 
-	// size of the alfabet
+	// size of the alphabet
 	private int d = 26;
 	// prime number for modulo operator
 	private int q = 31;
@@ -21,8 +21,8 @@ public class RabinKarp {
 		}
 
 		for (int i = 0; i < patternLength; ++i) {
-			hashPattern = (d * hashPattern + pattern.charAt(i)) % q;
-			hashText = (d * hashText + text.charAt(i)) % q;
+			hashPattern = (d*hashPattern + pattern.charAt(i)) % q;
+			hashText = (d*hashText + text.charAt(i)) % q; 
 		}
 
 		for (int i = 0; i <= textLength - patternLength; ++i) {
@@ -40,7 +40,7 @@ public class RabinKarp {
 			}
 
 			if (i < textLength - patternLength) {
-				hashText = ((hashText - text.charAt(i) * h) * d + text.charAt(i + patternLength));
+				hashText = ((hashText - text.charAt(i) * h) * d + text.charAt(i + patternLength)) % q;
 				//might be negative
 				if(hashText < 0) {
 					hashText +=q;
